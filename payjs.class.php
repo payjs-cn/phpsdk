@@ -14,6 +14,7 @@ class Payjs
     protected $api_url_cashier;
     protected $api_url_refund;
     protected $api_url_close;
+    protected $api_url_reverse;
     protected $api_url_check;
     protected $api_url_user;
     protected $api_url_info;
@@ -30,6 +31,7 @@ class Payjs
         $this->api_url_cashier = $api_url . 'cashier';
         $this->api_url_refund  = $api_url . 'refund';
         $this->api_url_close   = $api_url . 'close';
+        $this->api_url_reverse = $api_url . 'reverse';
         $this->api_url_check   = $api_url . 'check';
         $this->api_url_user    = $api_url . 'user';
         $this->api_url_info    = $api_url . 'info';
@@ -72,6 +74,14 @@ class Payjs
     public function close($payjs_order_id)
     {
         $this->url = $this->api_url_close;
+        $data      = ['payjs_order_id' => $payjs_order_id];
+        return $this->post($data);
+    }
+    
+    // 撤销订单
+    public function reverse($payjs_order_id)
+    {
+        $this->url = $this->api_url_reverse;
         $data      = ['payjs_order_id' => $payjs_order_id];
         return $this->post($data);
     }
