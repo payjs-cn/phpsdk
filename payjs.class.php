@@ -18,6 +18,7 @@ class Payjs
     protected $api_url_check;
     protected $api_url_user;
     protected $api_url_info;
+    protected $api_url_complaint;
     protected $api_url_bank;
     protected $api_url_jsapi;
 
@@ -26,17 +27,18 @@ class Payjs
         $this->mchid = $mchid;
         $this->key = $key;
 
-        $api_url     = 'https://payjs.cn/api/';
-        $this->api_url_native  = $api_url . 'native';
-        $this->api_url_cashier = $api_url . 'cashier';
-        $this->api_url_refund  = $api_url . 'refund';
-        $this->api_url_close   = $api_url . 'close';
-        $this->api_url_reverse = $api_url . 'reverse';
-        $this->api_url_check   = $api_url . 'check';
-        $this->api_url_user    = $api_url . 'user';
-        $this->api_url_info    = $api_url . 'info';
-        $this->api_url_bank    = $api_url . 'bank';
-        $this->api_url_jsapi   = $api_url . 'jsapi';
+        $api_url = 'https://payjs.cn/api/';
+        $this->api_url_native    = $api_url . 'native';
+        $this->api_url_cashier   = $api_url . 'cashier';
+        $this->api_url_refund    = $api_url . 'refund';
+        $this->api_url_close     = $api_url . 'close';
+        $this->api_url_reverse   = $api_url . 'reverse';
+        $this->api_url_check     = $api_url . 'check';
+        $this->api_url_user      = $api_url . 'user';
+        $this->api_url_info      = $api_url . 'info';
+        $this->api_url_complaint = $api_url . 'complaint';
+        $this->api_url_bank      = $api_url . 'bank';
+        $this->api_url_jsapi     = $api_url . 'jsapi';
     }
 
     // 扫码支付
@@ -106,6 +108,14 @@ class Payjs
     public function info()
     {
         $this->url = $this->api_url_info;
+        $data      = [];
+        return $this->post($data);
+    }
+    
+    // 投诉查询
+    public function complaint()
+    {
+        $this->url = $this->api_url_complaint;
         $data      = [];
         return $this->post($data);
     }
