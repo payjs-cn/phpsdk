@@ -68,7 +68,6 @@ class Payjs
     public function refund($payjs_order_id)
     {
         $this->url = $this->api_url_refund;
-        $data      = ['payjs_order_id' => $payjs_order_id];
         return $this->post($data);
     }
 
@@ -76,7 +75,6 @@ class Payjs
     public function close($payjs_order_id)
     {
         $this->url = $this->api_url_close;
-        $data      = ['payjs_order_id' => $payjs_order_id];
         return $this->post($data);
     }
     
@@ -84,15 +82,13 @@ class Payjs
     public function reverse($payjs_order_id)
     {
         $this->url = $this->api_url_reverse;
-        $data      = ['payjs_order_id' => $payjs_order_id];
         return $this->post($data);
     }
 
     // 检查订单
-    public function check($payjs_order_id)
+    public function check($data)
     {
         $this->url = $this->api_url_check;
-        $data      = ['payjs_order_id' => $payjs_order_id];
         return $this->post($data);
     }
 
@@ -124,7 +120,6 @@ class Payjs
     public function bank($name)
     {
         $this->url = $this->api_url_bank;
-        $data      = ['bank' => $name];
         return $this->post($data);
     }
 
