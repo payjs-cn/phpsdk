@@ -21,6 +21,7 @@ class Payjs
     protected $api_url_complaint;
     protected $api_url_bank;
     protected $api_url_jsapi;
+    protected $api_url_mweb;
 
     public function __construct($mchid, $key)
     {
@@ -39,6 +40,7 @@ class Payjs
         $this->api_url_complaint = $api_url . 'complaint';
         $this->api_url_bank      = $api_url . 'bank';
         $this->api_url_jsapi     = $api_url . 'jsapi';
+        $this->api_url_mweb      = $api_url . 'mweb';
     }
 
     // 扫码支付
@@ -52,6 +54,13 @@ class Payjs
     public function jsapi(array $data)
     {
         $this->url = $this->api_url_jsapi;
+        return $this->post($data);
+    }
+
+    // H5 模式
+    public function mweb(array $data)
+    {
+        $this->url = $this->api_url_mweb;
         return $this->post($data);
     }
 
