@@ -74,21 +74,21 @@ class Payjs
     }
 
     // 退款
-    public function refund($payjs_order_id)
+    public function refund($data)
     {
         $this->url = $this->api_url_refund;
         return $this->post($data);
     }
 
     // 关闭订单
-    public function close($payjs_order_id)
+    public function close($data)
     {
         $this->url = $this->api_url_close;
         return $this->post($data);
     }
     
     // 撤销订单
-    public function reverse($payjs_order_id)
+    public function reverse($data)
     {
         $this->url = $this->api_url_reverse;
         return $this->post($data);
@@ -126,7 +126,7 @@ class Payjs
     }
 
     // 银行资料
-    public function bank($name)
+    public function bank($data)
     {
         $this->url = $this->api_url_bank;
         return $this->post($data);
@@ -161,7 +161,7 @@ class Payjs
         $data = array_filter($data);
         ksort($data);
         $sign = strtoupper(md5(urldecode(http_build_query($data) . '&key=' . $this->key)));
-        return $in_sign == $sign ? true : false;
+        return $in_sign == $sign;
     }
 
     // 数据发送
