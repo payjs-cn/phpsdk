@@ -14,7 +14,7 @@ $data = [
     "out_trade_no" => '123123123',
 ];
 
-$payjs = new Payjs();
+$payjs = new Payjs($mchid, $key);
 $result = $payjs->native($data);
 
 print_r($result);
